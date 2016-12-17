@@ -54,7 +54,10 @@ def __init__():
     f = factory()
     data = f.load()
     dt = localtime()
+    d = strftime('%Y-%m-%d', localtime())
+    d_struct = strptime(d, '%Y-%m-%d')
     t = strftime('%H:%M', localtime())
+    t_struct = strptime(t, '%H:%M')
     results = []
     procData = f.extract(data)
     for x in procData:
@@ -79,8 +82,8 @@ def __init__():
                 if match not in results:
                     results.append(match)
         elif next:
-            if talk_d == dt:
-                if talk_t > dt:
+            if talk_d == d_struct:
+                if talk_t > t_struct:
                     match = '%s%s\n%s - %s%s\n' % (co.BO, talk, start, room, co.E)
                     results.append(match)
         else:
