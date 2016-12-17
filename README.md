@@ -1,6 +1,10 @@
 fahr.py
 =======
 
+fahr.py is an offline Fahrplan checking script written in Python 2.  Using the fahrplan 
+schedule JSON, the script will either search for a talk by string or simply show remaining 
+talks for the day.  Don't let network outages ruin schedule checks!
+
 Usage: python fahr.py [-t $string] [-n]
 
 -t $string will search all titles for $string and return talk details
