@@ -12,7 +12,9 @@ Deps
 ----
 
 argparse
+
 json
+
 time
 
 The fahrplan schedule.json file is included, but please check for CCC updates to this file
