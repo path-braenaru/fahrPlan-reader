@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 
 import json
@@ -89,7 +89,7 @@ def __init__():
             exit(0)
     for entry in results:
         print(entry)
-    print('%sCurrent Time: %s%s%s' % (co.BO, co.GR, t, co.E))
+    print '%sCurrent Time: %s%s%s' % (co.BO, co.GR, t, co.E)
 
 if __name__ == '__main__':
     __init__()

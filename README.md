@@ -1,7 +1,7 @@
 fahr.py
 =======
 
-fahr.py is an offline Fahrplan checking script written in Python 2.  Using the fahrplan 
+fahr.py is an offline Fahrplan checking script written in Python 3.  Using the fahrplan 
 schedule JSON, the script will either search for a talk by string or simply show remaining 
 talks for the day.  Don't let network outages ruin schedule checks!
 
@@ -11,6 +11,8 @@ Usage: python fahr.py [-t $string] [-n]
 -n will show remaining talks for the current date
 
 talks that have already passed are returned in red, talks yet to occur wil lreturn in green
+
+fahr_py2.py is included for Python 2
 
 Deps
 ----
