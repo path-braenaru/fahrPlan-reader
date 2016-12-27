@@ -67,7 +67,7 @@ def __init__():
         talk_d = strptime(date[0:10], '%Y-%m-%d')
         talk_t = strptime(start, '%H:%M')
         if title:
-            if title in talk.lower():
+            if title.lower() in talk.lower():
                 if talk_dt > dt:
                     a = co.GR
                 #elif date == d:
