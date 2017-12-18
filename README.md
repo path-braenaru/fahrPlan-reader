@@ -16,8 +16,8 @@ talks that have already passed are returned in red, talks yet to occur will retu
 Deps
 ----
 
-+argparse  
-+json  
-+time  
++ argparse  
++ json  
++ time  
 
 The fahrplan schedule.json file is included, but please check for CCC updates to this file
