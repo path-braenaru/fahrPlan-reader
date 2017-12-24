@@ -5,11 +5,12 @@ fahr.py is an offline Fahrplan checking script written in Python (2 and 3 compat
 schedule JSON, the script will either search for a talk by string or simply show remaining 
 talks for the day.  Don't let network outages ruin schedule checks!
 
-Usage: python fahr.py [-t/--talk $string] [-n] [--track $string]
+Usage: python fahr.py [-t/--talk $string] [-n] [--track $string] [--classify]
 
 + -t $string will search all titles for $string and return talk details  
 + -n will show remaining talks for the current date  
 + --track will show all results for a given track  
++ add --classify to see the associated classifiers (track relevance by %) in the output for the talks
 
 talks that have already passed are returned in red, talks yet to occur will return in green
 
