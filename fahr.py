@@ -46,14 +46,15 @@ class process():
 			for room in rooms:
 				for i in x['rooms'][room]:
 					tup = (i['title'], i['room'], i['date'],
-						i['start'], i['duration'], i['track'], i['id'])
+						i['start'], i['duration'], i['track'],
+						i['id'], i['description'])
 					if tup not in procData:
 						procData.append(tup)
 		return procData
 
 
-	def resultFormat(self, talk_dt, dt, x, classify):
-		(talk, room, date, start, duration, track, id) = x
+	def resultFormat(self, talk_dt, dt, x, classify, isDesc):
+		(talk, room, date, start, duration, track, id, desc) = x
 		if talk_dt > dt:
 			a = co.GR
 		else:
@@ -62,6 +63,8 @@ class process():
 				a, talk, room, date[0:10]) +\
 			'Track: %s\n - Start: %s\n - Duration: %s%s\n' % (
 				track, start, duration, co.E)
+		if isDesc:
+			match += '%s - Description:\n%s\n%s' % (a, desc, co.E)
 		if classify:
 			heat = ' - Classifiers:\n'
 			if id in self.classifiers:
@@ -70,6 +73,7 @@ class process():
 						heat += '\t- %s: %s\n' % (
 							k, entry)
 			match += '%s%s%s' % (a, heat, co.E)
+
 		return match
 
 
@@ -85,11 +89,14 @@ def __init__():
 		'--track')
 	p.add_argument(
 		'--classify', action='store_true')
+	p.add_argument(
+		'--description', action='store_true')
 	args = p.parse_args()
 	classify = args.classify
 	title = args.title
 	next = args.next
 	trackSearch = args.track
+	isDesc = args.description
 	f = process()
 	data = f.load()
 	dt = localtime()
@@ -100,19 +107,19 @@ def __init__():
 	results = []
 	procData = f.extract(data)
 	for x in procData:
-		(talk, room, date, start, duration, track, id) = x
+		(talk, room, date, start, duration, track, id, desc) = x
 		talk_dt = date[0:10] + ' ' + start
 		talk_dt = strptime(talk_dt, '%Y-%m-%d %H:%M')
 		talk_d = strptime(date[0:10], '%Y-%m-%d')
 		talk_t = strptime(start, '%H:%M')
 		if title:
 			if title.lower() in talk.lower():
-				match = f.resultFormat(talk_dt, dt, x, classify)
+				match = f.resultFormat(talk_dt, dt, x, classify, isDesc)
 				if match not in results:
 					results.append(match)
 		elif trackSearch:
 			if trackSearch.lower() in track.lower():
-				match = f.resultFormat(talk_dt, dt, x, classify)
+				match = f.resultFormat(talk_dt, dt, x, classify, isDesc)
 				if match not in results:
 					results.append(match)
 		elif next:
