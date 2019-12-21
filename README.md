@@ -10,7 +10,7 @@ Usage: python fahr.py [-t/--talk $string] [-n] [--track $string] [--classify]
 + -t $string will search all titles for $string and return talk details  
 + -n will show remaining talks for the current date  
 + --track will show all results for a given track  
-+ add --classify to see the associated classifiers (track relevance by %) in the output for the talks
++ add --classify to see the associated classifiers (track relevance by %) in the output for the talks  
 ++ As of 2019/12/21: JSON with classifiers may be available again, but currently will not populate (and has been commented out)!
 talks that have already passed are returned in red, talks yet to occur will return in green
 
