@@ -23,19 +23,19 @@ class process():
 		self.tracks = []
 
 	def load(self):
-		with open('sched36.json', 'r') as jsonfile:
+		with open('schedule.json', 'r') as jsonfile:
 			for entry in jsonfile.readlines():
 				main_data = json.loads(entry)
 			jsonfile.close()
-		with open('extraData_classifiers.json') as jsonfile:
-			for entry in jsonfile.readlines():
-				data = json.loads(entry)
-				for x in data:
-					if x['event_id'] not in self.classifiers:
-						entries = {}
-						for y in x['event_classifiers']:
-							entries[y] = x['event_classifiers'][y]
-						self.classifiers[x['event_id']] = entries
+		#with open('extraData_classifiers.json') as jsonfile:
+		#	for entry in jsonfile.readlines():
+		#		data = json.loads(entry)
+		#		for x in data:
+		#			if x['event_id'] not in self.classifiers:
+		#				entries = {}
+		#				for y in x['event_classifiers']:
+		#					entries[y] = x['event_classifiers'][y]
+		#				self.classifiers[x['event_id']] = entries
 		return main_data
 
 	def extract(self, data):
