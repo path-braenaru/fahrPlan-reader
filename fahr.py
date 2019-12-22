@@ -24,9 +24,8 @@ class process():
 
 	def load(self):
 		with open('schedule.json', 'r') as jsonfile:
-			for entry in jsonfile.readlines():
-				main_data = json.loads(entry)
-			jsonfile.close()
+			main_data = json.load(jsonfile)
+
 		#with open('extraData_classifiers.json') as jsonfile:
 		#	for entry in jsonfile.readlines():
 		#		data = json.loads(entry)
